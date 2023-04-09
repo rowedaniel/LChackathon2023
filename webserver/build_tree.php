@@ -81,7 +81,11 @@ function buildLeaf($task, $subtask, $finished, $all_finished) {
 
 	echo "<div>";
 	echo "<img src='rightbranchskeleton.png' alt='leaf' class='branch'>";
-	echo "<img src='leaf set 4.png' alt='leaf' class='decoration'>";
+	if($finished) {
+		echo "<img src='blossoms1.png' alt='leaf' class='decoration'>";
+	} else {
+		echo "<img src='leaves.png' alt='leaf' class='decoration'>";
+	}
 	echo "</div>";
 
 	echo "<div class='text'>";
