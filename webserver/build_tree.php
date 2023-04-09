@@ -18,9 +18,12 @@ function buildFoodBlurb($city, $task, $subtask) {
 }
 
 function buildInspirationalBlurb($task, $subtask) {
+	
+	$inspQuotes = ["Failure at some point in your life is inevitable, but giving up is unforgivable.", "Folks, I can tell you I've known eight presidents, three of them intimately.", "My father used to have an expression. He'd say, 'Joey, a job is about a lot more than a paycheck. It's about your dignity. It's about respect. It's about your place in your community.'", "If I don't run for president, we'll all be OK.", "Osama bin Laden is dead and General Motors is alive.", "I know I'm not supposed to like muscle cars, but I like muscle cars.", "I'm not big on flak jackets and tie-dyed shirts. You know, that's not me.", "For too long in this society, we have celebrated unrestrained individualism over common community.", "I was kind of secretly hoping one of my kids would go out and make a million bucks. So when they put me in a home, at least I'll have a window with a view.", "America doesn't have health insurance.", "I guess every single word I've ever said is going to be dissected now.", "We're going to be OK because of the American people. They have more grit, determination and courage than you can imagine.", "I know why we're strong. I know why we have held together; I know why we are united: it's because there's always been a growing middle class.", "You've got to reach a hand of friendship across the aisle and across philosophies in this country.", "During the 60's, I was, in fact, very concerned about the civil rights movement."];
+	$quote = $inspQuotes[rand(0, count($inspQuotes))-1];
 	echo "<div class='blurb' id='blurb-$task-$subtask'>";
-	echo "<h1>Inspirational Quote</h1>";
-	echo "<img src='$image' alt='$title'>";
+	echo "<h1>$quote</h1>";
+	echo "<img src='image.jpg' alt='joey'>";
 	echo "</div>";
 }
 
