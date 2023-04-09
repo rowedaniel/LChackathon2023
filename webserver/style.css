@@ -35,7 +35,7 @@ h1 {
   	width: 75%;
 }
 
-.trunk {
+.righttrunk, .lefttrunk {
 	position: relative;
 	left: 40.08%;
 	display: block;
@@ -43,11 +43,20 @@ h1 {
   	width: 18%;
 }
 
+.trunk {
+	position: relative;
+	left: 46.08%;
+	display: block;
+  	margin-right: auto;
+  	width: 6.9%;
+}
+
 .crown {
 	position: relative;
 	display: block;
-	width: 33%;
-	left: 32.4%;
+	width: 33.7%;
+	left: 32.05%;
+	top: 4px;
 }
 
 .finished {

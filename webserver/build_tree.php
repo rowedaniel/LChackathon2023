@@ -47,7 +47,7 @@ function buildTree($tasks) {
 }
 
 function buildBranch($task, $subtasks, $direction) {
-	echo "<img src='trunkskeleton1.png' class='trunk' alt='tree roots <3'>";
+	echo "<img src='" . $direction . "trunk.png' class='trunk' alt='tree roots <3'>";
 	echo "<li class='$direction task'>$task";
 	echo "<ul class='branch'>";
 
