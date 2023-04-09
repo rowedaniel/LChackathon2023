@@ -9,7 +9,6 @@ buildTree($tasks);
 
 newCityForm();
 
-getFood("london");
-
-
 ?>
+
+<script src="script.js"></script>

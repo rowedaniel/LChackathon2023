@@ -11,3 +11,28 @@
 .finished {
 	color: green;
 }
+
+/* format subtasks */
+.subtask input[type=submit] {
+	display: none;
+}
+
+.subtask.selected input[type=submit] {
+	display: inline;
+}
+
+/* format blurbs on right side */
+.blurb {
+	position: fixed;
+	right: 0;
+	transform: translateX(100%);
+	width: 50vw;
+	background-color: gray;
+	transition: transform 1s;
+}
+.blurb img {
+	width: 100%;
+}
+.selected .blurb {
+	transform: translateX(0);
+}

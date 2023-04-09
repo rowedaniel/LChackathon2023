@@ -50,9 +50,9 @@ function buildBranch($task, $subtasks, $direction) {
 
 function buildLeaf($task, $subtask, $finished) {
 	if($finished) {
-		echo "<li class='finished'>";
+		echo "<li class='subtask finished'>";
 	} else {
-		echo "<li class='unfinished'>";
+		echo "<li class='subtask unfinished'>";
 	}
 
 	echo $subtask;
