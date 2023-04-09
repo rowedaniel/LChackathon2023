@@ -1,7 +1,9 @@
 
 html {
 	background-image: url("background.png");
+	background-position: center;
   	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: Quicksand;
 }
 
@@ -18,11 +20,6 @@ h1 {
 	flex-direction: column-reverse;
 }
 
-.branch {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
 
 /* .right {
 }
@@ -37,12 +34,19 @@ h1 {
   	width: 75%;
 }
 
+.trunk {
+	display: block;
+  	margin-left: 40%;
+  	margin-right: auto;
+  	width: 18%;
+}
+
 .finished {
 	color: green;
 }
 
 /* format subtasks */
-.subtask input[type=submit] {
+.subtask input {
 	display: none;
 }
 
@@ -64,3 +68,4 @@ h1 {
 }
 .selected .blurb {
 	transform: translateX(0);
+}
