@@ -28,6 +28,7 @@ h1 {
 } */
 
 .roots {
+	/* position: relative; */
 	display: block;
   	margin-left: auto;
   	margin-right: auto;
@@ -35,10 +36,18 @@ h1 {
 }
 
 .trunk {
+	position: relative;
+	left: 40.08%;
 	display: block;
-  	margin-left: 40%;
   	margin-right: auto;
   	width: 18%;
+}
+
+.crown {
+	position: relative;
+	display: block;
+	width: 33%;
+	left: 32.4%;
 }
 
 .finished {
@@ -46,6 +55,9 @@ h1 {
 }
 
 /* format subtasks */
+.task {
+	position: absolute;
+}
 .subtask input {
 	display: none;
 }

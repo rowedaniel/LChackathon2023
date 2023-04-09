@@ -32,6 +32,7 @@ function buildTree($tasks) {
 	$direction_index = 0;
 
 	echo "<ul id='tree'>";
+	echo "<img src='rootskeleton1.png' class='roots' alt='tree roots <3'>";
 	foreach($tasks as $task => $subtasks) {
 
 		// alternate directions
@@ -40,12 +41,14 @@ function buildTree($tasks) {
 
 		buildBranch($task, $subtasks, $direction);
 	}
+	echo "<img src='crownskeleton1.png' class='crown' alt='tree crown'";
 	echo "</ul>";
 	newTaskForm();
 }
 
 function buildBranch($task, $subtasks, $direction) {
-	echo "<li class='$direction'>$task";
+	echo "<img src='trunkskeleton1.png' class='trunk' alt='tree roots <3'>";
+	echo "<li class='$direction task'>$task";
 	echo "<ul class='branch'>";
 
 	// check if all finished
