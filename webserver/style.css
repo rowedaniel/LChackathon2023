@@ -1,0 +1,13 @@
+#tree {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.branch {
+	display: flex;
+	flex-direction: row;
+}
+
+.finished {
+	color: green;
+}

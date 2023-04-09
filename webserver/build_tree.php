@@ -2,19 +2,47 @@
 include 'create_tasks.php';
 
 function buildTree($tasks) {
-	// builds tree from cookies
-	echo "<ul>";
+	// build tree from tasks
+
+	// 'branches' should alternate left/right
+	$directions = array('left', 'right');
+	$direction_index = 0;
+
+	echo "<ul id='tree'>";
 	foreach($tasks as $task => $subtasks) {
-		echo "<li>$task";
-		echo "<ul>";
-		foreach($subtasks as $subtask) {
-			echo "<li>$subtask</li>";
-		}
-		echo "</ul>";
-		newSubtaskForm($task);
-		echo "</li>";
+
+		// alternate directions
+		$direction_index = ($direction_index + 1) % count($directions);
+		$direction = $directions[$direction_index];
+
+		buildBranch($task, $subtasks, $direction);
 	}
 	echo "</ul>";
+}
+
+function buildBranch($task, $subtasks, $direction) {
+	echo "<li>$task";
+	echo "<ul class='branch $direction'>";
+	foreach($subtasks as $subtask => $finished) {
+		buildLeaf($task, $subtask, $finished);
+	}
+	echo "</ul>";
+	newSubtaskForm($task);
+	echo "</li>";
+}
+
+function buildLeaf($task, $subtask, $finished) {
+	if($finished) {
+		echo "<li class='finished'>";
+	} else {
+		echo "<li class='unfinished'>";
+	}
+
+	echo $subtask;
+	newDeleteSubtaskForm($task, $subtask);
+	newFinishSubtaskForm($task, $subtask);
+
+	echo "</li>";
 }
 
 ?>
