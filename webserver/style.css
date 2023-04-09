@@ -35,22 +35,6 @@ h1 {
   	width: 75%;
 }
 
-.righttrunk, .lefttrunk {
-	position: relative;
-	left: 40.08%;
-	display: block;
-  	margin-right: auto;
-  	width: 18%;
-}
-
-.trunk {
-	position: relative;
-	left: 46.08%;
-	display: block;
-  	margin-right: auto;
-  	width: 6.9%;
-}
-
 .crown {
 	position: relative;
 	display: block;
@@ -59,13 +43,61 @@ h1 {
 	top: 4px;
 }
 
+/* format tasks */
+.trunk {
+	position: relative;
+	left: 46.08%;
+	display: block;
+  	margin-right: auto;
+  	width: 6.9%;
+}
+
+.trunk img {
+	width: 100%;
+}
+
+.task {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.task.left {
+	flex-direction: row-reverse;
+}
+.task h2 {
+	position: absolute;
+	transform: rotate(90deg);
+}
+.task > div {
+	padding-left: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+
+
+/* format subtasks */
+.subtask > div {
+	position: relative;
+	top: 0.87vw;
+	width: 6vw;
+}
 .finished {
 	color: green;
 }
-
-/* format subtasks */
-.task {
+.subtask .decoration {
 	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+
+
+/* format subtask text */
+.subtask .text {
+	position: absolute;
+	transform: translateY(-5%);
 }
 .subtask input {
 	display: none;
@@ -81,7 +113,7 @@ h1 {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	transform: translateX(100%);
+	transform: translateX(1000%);
 	width: 50vw;
 	background-color: gray;
 	transition: transform 1s;

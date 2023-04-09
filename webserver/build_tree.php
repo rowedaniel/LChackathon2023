@@ -47,9 +47,11 @@ function buildTree($tasks) {
 }
 
 function buildBranch($task, $subtasks, $direction) {
-	echo "<img src='" . $direction . "trunk.png' class='trunk' alt='tree roots <3'>";
-	echo "<li class='$direction task'>$task";
-	echo "<ul class='branch'>";
+	echo "<div class='trunk'>";
+	echo "<img src='" . $direction . "trunk.png' alt='tree roots <3'>";
+	echo "<div class='$direction task'>";
+	echo "<h2>$task</h2>";
+	echo "<div>";
 
 	// check if all finished
 	$all_finished = true;
@@ -61,19 +63,26 @@ function buildBranch($task, $subtasks, $direction) {
 	foreach($subtasks as $subtask => $finished) {
 		buildLeaf($task, $subtask, $finished, $all_finished);
 	}
-	echo "</ul>";
 	newSubtaskForm($task);
-	echo "</li>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
 }
 
 function buildLeaf($task, $subtask, $finished, $all_finished) {
 	if($finished) {
-		echo "<li class='subtask finished'>";
+		echo "<span class='subtask finished'>";
 	} else {
-		echo "<li class='subtask unfinished'>";
+		echo "<span class='subtask unfinished'>";
 	}
 
-	echo $subtask;
+	echo "<div>";
+	echo "<img src='rightbranchskeleton.png' alt='leaf' class='branch'>";
+	echo "<img src='leaf set 4.png' alt='leaf' class='decoration'>";
+	echo "</div>";
+
+	echo "<div class='text'>";
+	echo "<h3>$subtask</h3>";
 	newDeleteSubtaskForm($task, $subtask);
 	newFinishSubtaskForm($task, $subtask);
 
@@ -82,8 +91,9 @@ function buildLeaf($task, $subtask, $finished, $all_finished) {
 	} else {
 		buildInspirationalBlurb($task, $subtask);
 	}
+	echo "</div>";
 
-	echo "</li>";
+	echo "</span>";
 }
 
 ?>
