@@ -2,8 +2,7 @@
 include 'create_tasks.php';
 
 function buildFoodBlurb($city, $task, $subtask) {
-	$response = file_get_contents("http://localhost:8000/$city");
-	$data = json_decode($response, true);
+	$data = getRewardFromCookie($task);
 	if($data == null || !isset($data['title']) || !isset($data['image']) || !isset($data['link'])) {
 		return;
 	}
@@ -15,6 +14,14 @@ function buildFoodBlurb($city, $task, $subtask) {
 	echo "<div class='blurb' id='blurb-$task-$subtask'>";
 	echo "<h1>$title</h1>";
 	echo "<a href='$link'> <img src='$image' alt='$title'> </a>";
+	echo "</div>";
+}
+
+function buildInspirationalBlurb($task, $subtask) {
+	echo "<div class='blurb' id='blurb-$task-$subtask'>";
+	echo "<h1>Inspirational Quote</h1>";
+	echo "<img src='$image' alt='$title'>";
+	echo "</div>";
 }
 
 function buildTree($tasks) {
@@ -40,15 +47,23 @@ function buildTree($tasks) {
 function buildBranch($task, $subtasks, $direction) {
 	echo "<li class='$direction'>$task";
 	echo "<ul class='branch'>";
+
+	// check if all finished
+	$all_finished = true;
 	foreach($subtasks as $subtask => $finished) {
-		buildLeaf($task, $subtask, $finished);
+		if(!$finished) {
+			$all_finished = false;
+		}
+	}
+	foreach($subtasks as $subtask => $finished) {
+		buildLeaf($task, $subtask, $finished, $all_finished);
 	}
 	echo "</ul>";
 	newSubtaskForm($task);
 	echo "</li>";
 }
 
-function buildLeaf($task, $subtask, $finished) {
+function buildLeaf($task, $subtask, $finished, $all_finished) {
 	if($finished) {
 		echo "<li class='subtask finished'>";
 	} else {
@@ -58,7 +73,12 @@ function buildLeaf($task, $subtask, $finished) {
 	echo $subtask;
 	newDeleteSubtaskForm($task, $subtask);
 	newFinishSubtaskForm($task, $subtask);
-	buildFoodBlurb('portland', $task, $subtask);
+
+	if($all_finished) {
+		buildFoodBlurb($city, $task, $subtask);
+	} else {
+		buildInspirationalBlurb($task, $subtask);
+	}
 
 	echo "</li>";
 }

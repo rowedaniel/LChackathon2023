@@ -45,6 +45,10 @@ function saveTasksToCookie($tasks) {
 	setcookie('tname', json_encode($tasks), time() + (86400 * 30), "/");
 }
 
+function saveRewardToCookie($task, $reward) {
+	setcookie("reward-$task", json_encode($reward), time() + (86400 * 30), "/");
+}
+
 function getTasksFromCookie() {
 	// get existing tasks from cookie
 	$tasks = array();
@@ -58,15 +62,46 @@ function getTasksFromCookie() {
 	return $tasks;
 }
 
-function handleNewTask($tasks) {
+function getCityFromCookie() {
+	// get existing city from cookie
+	$city = "Portland";
+	if(isset($_COOKIE['city'])) {
+		$city = $_COOKIE['city'];
+	}
+	return $city;
+}
+
+function getRewardFromCookie($task) {
+	// get existing reward from cookie
+	$reward = "";
+	if(isset($_COOKIE["reward-$task"])) {
+		$reward = json_decode($_COOKIE["reward-$task"], true);
+		if($reward == null) {
+			$reward = "";
+		}
+	}
+	return $reward;
+}
+
+function handleCity() {
+	// set city from GET params
+	if(isset($_GET['city'])) {
+		setcookie('city', $_GET['city'], time() + (86400 * 30), "/");
+	}
+}
+
+function handleNewTask($tasks, $city) {
 	// add new task from GET params
 	if(!isset($_GET['tname'])) {
 		return $tasks;
 	}
 	$tasks[$_GET["tname"]] = array();
 	saveTasksToCookie($tasks);
-	return $tasks;
 
+	// get food reward
+	$response = json_decode(file_get_contents("http://localhost:8000/$city"));
+	saveRewardToCookie($_GET["tname"], $response);
+	return $tasks;
 }
 
 function handleNewSubtask($tasks) {
@@ -133,7 +168,6 @@ function handleMarkSubtaskCompleted($tasks) {
 		return $tasks;
 	}
 
-	echo "switching $task $subtask<br>";
 	$tasks[$task][$subtask] = !$tasks[$task][$subtask];
 	saveTasksToCookie($tasks);
 	return $tasks;
@@ -142,8 +176,13 @@ function handleMarkSubtaskCompleted($tasks) {
 }
 
 function handleInput() {
+	// get city
+	handleCity();
+	$city = getCityFromCookie();
+	
+	// get tasks
 	$tasks = getTasksFromCookie();
-	$tasks = handleNewTask($tasks);
+	$tasks = handleNewTask($tasks, $city);
 	$tasks = handleNewSubtask($tasks);
 	$tasks = handleDeleteSubtask($tasks);
 	$tasks = handleMarkSubtaskCompleted($tasks);

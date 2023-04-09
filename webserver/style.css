@@ -66,6 +66,6 @@ h1 {
 .blurb img {
 	width: 100%;
 }
-.selected .blurb {
+.selected.finished .blurb {
 	transform: translateX(0);
 }
