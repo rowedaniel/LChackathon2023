@@ -58,7 +58,7 @@ function buildLeaf($task, $subtask, $finished) {
 	echo $subtask;
 	newDeleteSubtaskForm($task, $subtask);
 	newFinishSubtaskForm($task, $subtask);
-	buildFoodBlurb('portland', $task, $subtask);
+	// buildFoodBlurb('portland', $task, $subtask);
 
 	echo "</li>";
 }

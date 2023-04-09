@@ -10,9 +10,7 @@ buildTree($tasks);
 
 newCityForm();
 
-getFood("london");
-
-
+echo "<img src='trunkskeleton1.png' class='trunk' alt='tree roots <3'>";
 echo "<img src='rootskeleton1.png' class='roots' alt='tree roots <3'>";
 
 
