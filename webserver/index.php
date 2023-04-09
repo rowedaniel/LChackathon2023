@@ -6,10 +6,12 @@ echo "<h1>Fruitful Thinking</h1>";
 include 'build_tree.php';
 
 $tasks = handleInput();
-
 buildTree($tasks);
 
-newTaskForm();
+newCityForm();
+
+getFood("london");
+
 
 echo "<img src='rootskeleton1.png' class='roots' alt='tree roots <3'>";
 

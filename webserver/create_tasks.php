@@ -2,6 +2,14 @@
 
 <?php
 
+function newCityForm() {
+	echo "<form action='/index.php'>";
+  	echo "<label for='city'>City:</label><br>";
+  	echo "<input type='text' name='city' id='city' value='Portland'>";
+  	echo "<input type='submit' value='Submit'>";
+	echo "</form>";
+}
+
 function newTaskForm() {
 	echo '<form action="/index.php">';
   	echo '<label for="tname">Task name:</label><br>';
