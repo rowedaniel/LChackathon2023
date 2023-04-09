@@ -21,8 +21,8 @@ function buildTree($tasks) {
 }
 
 function buildBranch($task, $subtasks, $direction) {
-	echo "<li>$task";
-	echo "<ul class='branch $direction'>";
+	echo "<li class='$direction'>$task";
+	echo "<ul class='branch'>";
 	foreach($subtasks as $subtask => $finished) {
 		buildLeaf($task, $subtask, $finished);
 	}
